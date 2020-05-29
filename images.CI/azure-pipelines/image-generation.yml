@@ -24,6 +24,13 @@ jobs:
         Write-Host "Download $(CUSTOM_REPOSITORY_BRANCH) branch from $(CUSTOM_REPOSITORY_URL)"
         $env:GIT_REDIRECT_STDERR = '2>&1'
         git clone $(CUSTOM_REPOSITORY_URL) . -b $(CUSTOM_REPOSITORY_BRANCH) --single-branch --depth 1
+        
+  - task: PowerShell@2
+    displayName: 'Enable PowerShell Remoting'
+    inputs:
+      targetType: 'inline'
+      script: 'Enable-PSRemoting -Force'
+  
   - task: PowerShell@2
     displayName: 'Build VM'
     inputs:
