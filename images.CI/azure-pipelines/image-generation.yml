@@ -6,11 +6,11 @@
 
 jobs:
 - job:
-  pool: ci-agent-pool
+  pool: opsguild-test-scalesetagents
   timeoutInMinutes: 600
   cancelTimeoutInMinutes: 30
   variables:
-  - group: Image Generation Variables
+  - group: opsguild.virtual.environments
 
   steps:
   - task: PowerShell@2
